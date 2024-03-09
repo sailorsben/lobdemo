@@ -37,9 +37,9 @@
             padding: 0;
             /* If using an image, the background image should have dimensions of 3375x1875 pixels. */
             /* background-image: url(https://s3-us-west-2.amazonaws.com/public.lob.com/assets/jungle.jpg); */
+            background-image: url('https://raw.githubusercontent.com/sailorsben/lobdemo/main/public/images/back_background.png');
             background-size: 11.25in 6.25in;
             background-repeat: no-repeat;
-            background-image: url(https://raw.githubusercontent.com/sailorsben/lobdemo/main/public/images/back_background.png);
         }
 
         .var-image-1 {
@@ -49,7 +49,7 @@
             left: 0.3028in;
             top: 0.2872in;
             object-fit: cover;
-            background-image: url(https://raw.githubusercontent.com/sailorsben/lobdemo/main/public/images/boots.png);
+            background-image: url('https://raw.githubusercontent.com/sailorsben/lobdemo/main/public/images/boots.png');
             background-size: auto 2in;
             background-repeat: no-repeat;
             background-position: right;
@@ -62,7 +62,7 @@
             left: 2.8929in;
             top: 0.2872in;
             object-fit: cover;
-            background-image: url(https://raw.githubusercontent.com/sailorsben/lobdemo/main/public/images/backpack.png);
+            background-image: url('https://raw.githubusercontent.com/sailorsben/lobdemo/main/public/images/backpack.png');
             background-size: auto 2.1586in;
             background-repeat: no-repeat;
             background-position: center;
@@ -75,7 +75,7 @@
             left: 5.5389in;
             top: 0.2872in;
             object-fit: cover;
-            background-image: url(https://raw.githubusercontent.com/sailorsben/lobdemo/main/public/images/hat.png);
+            background-image: url('https://raw.githubusercontent.com/sailorsben/lobdemo/main/public/images/hat.png');
             background-size: auto 4.4in;
             background-repeat: no-repeat;
             background-position: center;
@@ -88,7 +88,7 @@
             left: 8.2975in;
             top: 0.2872in;
             object-fit: cover;
-            background-image: url(https://raw.githubusercontent.com/sailorsben/lobdemo/main/public/images/watch.png);
+            background-image: url('https://raw.githubusercontent.com/sailorsben/lobdemo/main/public/images/watch.png');
             background-size: auto 2in;
             background-repeat: no-repeat;
             background-position: center;
@@ -189,53 +189,34 @@
             background-color: white;
         }
 
-        .white_area {
-            position: absolute;
-            width: 11.25in;
-            height: 6.25in;
-            overflow: hidden;
-        }
-
-        .white_area:before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, white 50%, transparent 100%);
-            z-index: 0;
-        }
-
     </style>
 </head>
 
 <body>
+    <div class="var-image-1"></div>
+    <div class="var-image-2"></div>
+    <div class="var-image-3"></div>
+    <div class="var-image-4"></div>
+    <div class="promo">Welcome Mountain Peak Gear {{firstname}}!</div>
+    <div class="text">Thank you for choosing us! We're excited you're here! Scan the QR code for 20% off select items!</div>
+    <div class="url">Visit <span class="cta-highlight">mountainpeakgear.com/offer</span> and use your unique promo code:
+        <span class="cta-highlight">MPG3893</span></div>
+    <img class="qr"
+        src="https://s3.us-west-2.amazonaws.com/public.lob.com/solutions/Lob_demo_postcard_conversion/Retail+psc/6x11+Retail+Postcard/Links/qr.png">
+    <div class="cta">Scan code for quick acccess.</div>
+    <div class="postage"></div>
 
-    <div class="white_area">
-        <div class="var-image-1"></div>
-        <div class="var-image-2"></div>
-        <div class="var-image-3"></div>
-        <div class="var-image-4"></div>
-        <div class="promo">Welcome Mountain Peak Gear {{firstname}}!</div>
-        <div class="text">Thank you for choosing us! We're excited you're here! Scan the QR code for 20% off select items!</div>
-        <div class="url">Visit <span class="cta-highlight">mountainpeakgear.com/offer</span> and use your unique promo code:
-            <span class="cta-highlight">MPG3893</span></div>
-        <img class="qr"
-            src="https://s3.us-west-2.amazonaws.com/public.lob.com/solutions/Lob_demo_postcard_conversion/Retail+psc/6x11+Retail+Postcard/Links/qr.png">
-        <div class="cta">Scan code for quick acccess.</div>
-        <div class="postage"></div>
-
-        <div id="safe-area">
-            <!-- All text should appear within the safe area. -->
-        </div>
-
-        <!-- Delete this div before submitting your postcard! -->
-        <!-- Do not place any artwork or text in the ink free area. Address and postage will be automatically printed here by Lob. -->
-        <div id="ink-free"></div>
-
-
-
-        <div id="nguard-popover-hover" style="display: block;"></div>
+    <div id="safe-area">
+        <!-- All text should appear within the safe area. -->
     </div>
+
+    <!-- Delete this div before submitting your postcard! -->
+    <!-- Do not place any artwork or text in the ink free area. Address and postage will be automatically printed here by Lob. -->
+    <div id="ink-free"></div>
+
+
+
+    <div id="nguard-popover-hover" style="display: block;"></div>
 </body>
 
 </html>
