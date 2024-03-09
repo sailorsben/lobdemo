@@ -1,0 +1,222 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    background-image: url('/images/background.jpg');
+    background-size: cover;
+    background-position: stretch;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.container, .header {
+    width: 100%;
+}
+
+body,
+input,
+textarea,
+select,
+button {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+label {
+    margin: 10px 0 5px;
+    display: block;
+    font-weight: bold;
+}
+
+/* Input and TextArea styles */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: 96%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #000; 
+    border-radius: 5px; 
+    padding: 10px;
+}
+
+input[type="submit"],
+button {
+    background-color: #075038;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #0c6b3f;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+select {
+    width: 100%;
+}
+
+select > option {
+    background-color:  rgba(250, 248, 235, 0.75);
+}
+
+select::-webkit-scrollbar {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    position: relative;
+    z-index: 1000;
+    background: linear-gradient(to right, 
+                                rgba(255, 255, 255, 0) 0%, 
+                                rgba(255, 255, 255, 1) 45%, 
+                                rgba(255, 255, 255, 1) 55%, 
+                                rgba(255, 255, 255, 0) 100%);
+    background-color: rgba(255, 255, 255, 0.5); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+
+.logo {
+    max-width: 120px; 
+    height: auto;
+}
+
+
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.product-description, .checkout-form {
+    flex: 1;
+    padding: 20px;
+}
+
+.product-description {
+    margin-right: 20px; 
+}
+
+.product-details {
+    background-color: rgba(250, 248, 235, 0.75);
+    border-radius: 4px;
+    border: 2px solid black;
+    padding: 20px;
+    width: 94%
+}
+
+.thankyou {
+    background-color: rgba(250, 248, 235, 0.75);
+    border-radius: 4px;
+    border: 2px solid black;
+    padding: 20px;
+    width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-top: auto;
+}
+
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border: 2px solid black;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    border-radius: 4px; 
+    padding: 5px; 
+    background: white; 
+}
+
+
+.price {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+@media (min-width: 768px) {
+    .half-width {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .half-width .form-group {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    .half-width .form-group:last-child {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .checkout-container {
+        flex-direction: column;
+    }
+
+    .product-description {
+        margin-right: 0;
+        margin-bottom: 20px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 0;
+    }
+
+    .logo {
+        max-width: 80px;
+    }
+}
+
