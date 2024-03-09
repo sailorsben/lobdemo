@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Checkout - Mountain Peak Gear</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <a href="/">
+            <img src="/images/mountain_peak_gear.jpg" alt="Mountain Peak Gear Logo" class="logo" />
+        </a>
+    </div>
+
+    <div class="checkout-container">
+        <div class="product-description">
+            <img src="/images/mountain_explorer_jacket.jpg" alt="Mountain Explorer Jacket" class="product-image" />
+            <div class="product-details">
+                <h2>Mountain Explorer Jacket</h2>
+                <p class="price">Price: $199.99</p>
+                <p>This jacket is perfect for your next outdoor adventure. Waterproof, breathable, and durable, it's
+                    designed to keep you comfortable in any conditions.</p>
+            </div>
+        </div>
+
+        <div class="checkout-form">
+            <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" id="salesforceForm">
+                <input type="hidden" name="oid" value="<%= oid %>">
+                <input type="hidden" name="retURL" value="<%= retURL %>">
+                <input type=hidden name="lead_source" value="Mountain Peak Gear Web Form">
+                <input type="hidden" name="Deliverable__c" id="deliverable" value="">
+                <input type="hidden" name="Confidence_Score__c" id="confidenceScore" value="">
+                <input type="hidden" name="Confidence_Level__c" id="confidenceLevel" value="">
+
+                <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <input id="first_name" maxlength="40" name="first_name" size="20" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    <input id="last_name" maxlength="80" name="last_name" size="20" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" maxlength="80" name="email" size="20" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <label for="street">Street</label>
+                    <input id="street" name="street" size="20" type="text"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input id="city" maxlength="40" name="city" size="20" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <label for="state">State/Province</label>
+                    <select id="state" name="state">
+                        <option value="AL">AL</option>
+                        <option value="AK">AK</option>
+                        <option value="AZ">AZ</option>
+                        <option value="AR">AR</option>
+                        <option value="CA">CA</option>
+                        <option value="CO">CO</option>
+                        <option value="CT">CT</option>
+                        <option value="DE">DE</option>
+                        <option value="FL">FL</option>
+                        <option value="GA">GA</option>
+                        <option value="HI">HI</option>
+                        <option value="ID">ID</option>
+                        <option value="IL">IL</option>
+                        <option value="IN">IN</option>
+                        <option value="IA">IA</option>
+                        <option value="KS">KS</option>
+                        <option value="KY">KY</option>
+                        <option value="LA">LA</option>
+                        <option value="ME">ME</option>
+                        <option value="MD">MD</option>
+                        <option value="MA">MA</option>
+                        <option value="MI">MI</option>
+                        <option value="MN">MN</option>
+                        <option value="MS">MS</option>
+                        <option value="MO">MO</option>
+                        <option value="MT">MT</option>
+                        <option value="NE">NE</option>
+                        <option value="NV">NV</option>
+                        <option value="NH">NH</option>
+                        <option value="NJ">NJ</option>
+                        <option value="NM">NM</option>
+                        <option value="NY">NY</option>
+                        <option value="NC">NC</option>
+                        <option value="ND">ND</option>
+                        <option value="OH">OH</option>
+                        <option value="OK">OK</option>
+                        <option value="OR">OR</option>
+                        <option value="PA">PA</option>
+                        <option value="RI">RI</option>
+                        <option value="SC">SC</option>
+                        <option value="SD">SD</option>
+                        <option value="TN">TN</option>
+                        <option value="TX">TX</option>
+                        <option value="UT">UT</option>
+                        <option value="VT">VT</option>
+                        <option value="VA">VA</option>
+                        <option value="WA">WA</option>
+                        <option value="WV">WV</option>
+                        <option value="WI">WI</option>
+                        <option value="WY">WY</option>
+                    </select>
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="zip">Zip</label>
+                    <input id="zip" maxlength="20" name="zip" size="20" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input id="country" maxlength="40" name="country" size="20" type="text" />
+                </div>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+</body>
+<script>
+    document.getElementById('salesforceForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const addressData = {
+            name: document.getElementById('first_name').value + ' ' + document.getElementById('last_name').value,
+            street: document.getElementById('street').value,
+            city: document.getElementById('city').value,
+            state: document.getElementById('state').value,
+            zip: document.getElementById('zip').value
+        };
+
+        fetch('/verify-address', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(addressData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.verified) {
+                    // Update hidden fields with verification data
+                    document.getElementById('deliverable').value = 'deliverable';
+                    document.getElementById('confidenceScore').value = data.lob_confidence_score.score; 
+                    document.getElementById('confidenceLevel').value = data.lob_confidence_score.level; 
+            
+                    // Submit the form with JavaScript
+                    document.getElementById('salesforceForm').submit();
+                } else {
+                    // Handle address verification failure
+                    alert('Address verification failed. Please check your address and try again.');
+                }
+            })            
+            .catch(error => {
+                // Handle errors
+                console.error('Error verifying address:', error);
+            });
+    });
+</script>
+
+</html>
