@@ -47,15 +47,14 @@ fetch('https://api.lob.com/v1/postcards', {
         }
     })
 })
-.then(response => {
-    if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+.then(response => response.json().then(data => ({ status: response.status, body: data })))
+.then(result => {
+    if (result.status !== 200) {
+        console.error('Error fetching data:', result.body.error.message);
+        throw new Error(`HTTP error! Status: ${result.status} - ${result.body.error.message}`);
     }
-    return response.json();
-})
-.then(data => {
-    console.log('Response from Lob API:', data);
+    console.log('Response from Lob API:', result.body);
 })
 .catch(error => {
-    console.error('Error fetching data:', error);
+    console.error('Error in operation:', error);
 });

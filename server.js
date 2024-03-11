@@ -49,18 +49,19 @@ app.post('/verify-address', async (req, res) => {
     const usVerificationsApi = new UsVerificationsApi(lobConfiguration);
 
     try {
-        // const verificationResponse = await usVerificationsApi.verifySingle({
-        //     primary_line: addressData.street,
-        //     city: addressData.city,
-        //     state: addressData.state,
-        //     zip_code: addressData.zip
-        // });
 
         const verificationResponse = await usVerificationsApi.verifySingle({
             primary_line: 'deliverable',
             //primary_line: 'undeliverable',
             zip_code: '11111'
         });
+
+        // const verificationResponse = await usVerificationsApi.verifySingle({
+        //     primary_line: addressData.street,
+        //     city: addressData.city,
+        //     state: addressData.state,
+        //     zip_code: addressData.zip
+        // });
 
          // Check the deliverability
          if (verificationResponse.deliverability === 'deliverable') {
